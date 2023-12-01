@@ -6,11 +6,39 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
+    <header class="header">
+      <div class="nav">
+        <div class="nav_left">
+          <%= link_to "ToProgress", root_path, class: :top %>
+        </div>
+        <div class="nav_right">
+          <% if user_signed_in? %>
+            <div class="user_info">
+              <%= current_user.grade.name %> <%= current_user.last_name %> <%= current_user.first_name %>
+            </div>
+            <div class="nav_bar">
+              <%= link_to "成績一覧", "#", class: :nav_btn %>
+              <%= link_to "質問", "#", class: :nav_btn %>
+              <%= link_to "ログアウト", destroy_user_session_path, data: {turbo_method: :delete}, class: :nav_btn %>
+            </div>
+          <% else %>
+            <div class="user_info">
+              <%= link_to "ログイン", new_user_session_path, class: :nav_btn %>
+            </div>
+            <div class="nav_bar">
+              <%= link_to "新規登録", new_user_registration_path, class: :nav_btn %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </header>
+
     <%= yield %>
   </body>
 </html>
