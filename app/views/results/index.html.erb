@@ -1,0 +1,11 @@
+<div class="main">
+  <% if current_user.grade_id == 1 %>
+    <div class="user_info"><%= @student.grade.name %> <%= @student.last_name %> <%= @student.first_name %></div>
+  <% end %>
+
+  <h2 class="page_heading">成績一覧</h2>
+
+  <% @results.each do |result| %>
+    <%= link_to result.name, student_result_path(@student.id, result.id) %>
+  <% end %>
+</div>

@@ -89,12 +89,19 @@ a {
 
 /* メイン */
 
+.main {
+  background-color: rgb(246, 253, 253);
+  padding: 20px 0 50px 30px;
+  min-height: 100vh;
+}
+
 .wrapper {
   background-color: rgb(246, 253, 253);
   display: flex;
 }
 
 .page_heading {
+  color: #4396ca;
   margin-bottom: 30px;
 }
 
@@ -102,6 +109,6 @@ a {
   background-color: azure;
 }
 
-.main {
+.main_right {
   background-color: azure;
 }
