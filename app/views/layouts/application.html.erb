@@ -23,7 +23,11 @@
               <%= current_user.grade.name %> <%= current_user.last_name %> <%= current_user.first_name %>
             </div>
             <div class="nav_bar">
-              <%= link_to "成績一覧", "#", class: :nav_btn %>
+              <% if current_user.grade_id == 1 %>
+                <%= link_to "生徒一覧", students_path, class: :nav_btn %>
+              <% else %>
+                <%= link_to "成績一覧", student_results_path(current_user.id), class: :nav_btn %>
+              <% end %>
               <%= link_to "質問", "#", class: :nav_btn %>
               <%= link_to "ログアウト", destroy_user_session_path, data: {turbo_method: :delete}, class: :nav_btn %>
             </div>
