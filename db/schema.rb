@@ -10,7 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_26_194345) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_03_095130) do
+  create_table "results", charset: "utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "category_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_results_on_user_id"
+  end
+
+  create_table "subjects", charset: "utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.float "score"
+    t.integer "max_score", null: false
+    t.float "average_score"
+    t.integer "rank"
+    t.integer "rank_range"
+    t.bigint "result_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["result_id"], name: "index_subjects_on_result_id"
+  end
+
   create_table "users", charset: "utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -26,4 +48,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_26_194345) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "results", "users"
+  add_foreign_key "subjects", "results"
 end
