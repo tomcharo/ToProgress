@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root "contents#index"
 
   resources :students, only: :index do
-    resources :results, only: [:index, :show]
+    resources :results, only: [:index, :show, :create]
   end
 
 end

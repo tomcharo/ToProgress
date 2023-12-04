@@ -1,11 +1,23 @@
-<div class="main">
-  <% if current_user.grade_id == 1 %>
-    <div class="user_info"><%= @student.grade.name %> <%= @student.last_name %> <%= @student.first_name %></div>
-  <% end %>
+<div class="wrapper">
 
-  <h2 class="page_heading"><%= @result.name %></h2>
+  <div class="side_bar">
+    <% @student.results.each do |result| %>
+      <div>
+        <%= link_to result.name, student_result_path(@student.id, result.id) %>
+      </div>
+    <% end %>
+  </div>
 
-  <% @result.subjects.each do |subject| %>
-    <%= subject.name %> <%= subject.max_score %>
-  <% end %>
+  <div class="main_right">
+    <% if current_user.grade_id == 1 %>
+      <div class="user_info"><%= @student.grade.name %> <%= @student.last_name %> <%= @student.first_name %></div>
+    <% end %>
+
+    <h2 class="page_heading"><%= @result.name %></h2>
+
+    <% @result.subjects.each do |subject| %>
+      <%= subject.name %> <%= subject.max_score %>
+    <% end %>
+  </div>
+
 </div>

@@ -4,10 +4,12 @@
 
 h2 {
   margin: 0;
+  padding: 0;
 }
 
 a {
   text-decoration: none;
+  color: black;
 }
 
 
@@ -35,7 +37,7 @@ a {
 }
 
 .user_info {
-  color: #4396ca;
+  color: navy;
   font-size: 20px;
 }
 
@@ -45,11 +47,11 @@ a {
 
 .nav_btn {
   display: inline-block;
-  color: #4396ca;
+  color: navy;
   margin-left: 5px;
   padding: 2px 3px;
   border-radius: 4px;
-  border: 1px solid #4396ca;
+  border: 1px solid navy;
 }
 
 
@@ -91,24 +93,30 @@ a {
 
 .main {
   background-color: rgb(246, 253, 253);
-  padding: 20px 0 50px 30px;
+  padding: 0 0 50px 30px;
   min-height: 100vh;
 }
 
 .wrapper {
-  background-color: rgb(246, 253, 253);
   display: flex;
 }
 
 .page_heading {
-  color: #4396ca;
-  margin-bottom: 30px;
+  color: navy;
+  padding-top: 30px;
+  margin-bottom: 20px;
 }
 
 .side_bar {
   background-color: azure;
+  min-height: 100vh;
+  width: 150px;
+  border-right: 1px solid navy;
 }
 
 .main_right {
-  background-color: azure;
+  background-color: rgb(246, 253, 253);
+  padding: 0 0 50px 5px;
+  min-height: 100vh;
+  min-width: calc(100vw - 150px);
 }

@@ -8,4 +8,25 @@
   <% @results.each do |result| %>
     <%= link_to result.name, student_result_path(@student.id, result.id) %>
   <% end %>
+
+  <h2 class="page_heading">成績登録</h2>
+
+  <%= form_with model: @new_result, url: student_results_path(@student.id), local: true do |f| %>
+    <%= render "shared/error_messages", model: f.object %>
+
+    <div class="field">
+      <%= f.label :name, "テスト名または学期" %><br />
+      <%= f.text_field :name, placeholder: "例）1学期中間", class: "input_default" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :category, "分類" %><br />
+      <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"select_box"}) %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "登録", class: "form_btn" %>
+    </div>
+  <% end %>
+
 </div>
