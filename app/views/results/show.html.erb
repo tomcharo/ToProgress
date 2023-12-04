@@ -1,11 +1,13 @@
 <div class="wrapper">
 
   <div class="side_bar">
+    <ul>
     <% @student.results.each do |result| %>
-      <div>
-        <%= link_to result.name, student_result_path(@student.id, result.id) %>
-      </div>
+      <li class="list_default">
+        <%= link_to result.name, student_result_path(@student.id, result.id), class: :nav_btn %>
+      </li>
     <% end %>
+    </ul>
   </div>
 
   <div class="main_right">
@@ -15,9 +17,24 @@
 
     <h2 class="page_heading"><%= @result.name %></h2>
 
-    <% @result.subjects.each do |subject| %>
-      <%= subject.name %> <%= subject.max_score %>
-    <% end %>
+    <table>
+      <tr>
+        <th class="subject_name">教科</th>
+        <th>点数/満点</th>
+        <th>平均点</th>
+        <th>順位/人数</th>
+      <tr>
+      <% @result.subjects.each do |subject| %>
+        <tr>
+          <td><%= subject.name %></td>
+          <td><%= subject.score %> / <%= subject.max_score %></td>
+          <td><%= subject.average_score %></td>
+          <td><%= subject.rank %> / <%= subject.rank_range %>
+        </tr>
+      <% end %>
+    </table>
+
+
   </div>
 
 </div>

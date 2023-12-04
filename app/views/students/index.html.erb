@@ -1,13 +1,41 @@
 <div class="main">
   <h2 class="page_heading">生徒一覧</h2>
 
-  <% @grades.each do |grade| %>
-    <div>
-      <%= grade.name %>
-      <% grade.users.each do |student| %>
-        <%= link_to student.last_name, student_results_path(student.id) %>
-      <% end %>
-    </div>
-  <% end %>
+  <div class="grade_wrapper">
 
+    <div class="grade_inner">
+
+      <% @grades_lower.each do |grade| %>
+        <ul class="student_list">
+          <li class="grade_name"><%= grade.name %></li>
+          <% grade.users.each do |student| %>
+            <li class="list_default">
+              <%= link_to student_results_path(student.id) do %>
+                <%= student.last_name %> <%= student.first_name %>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+
+    </div>
+
+    <div class="grade_inner">
+
+      <% @grades_higher.each do |grade| %>
+        <ul class="student_list">
+          <li class="grade_name"><%= grade.name %></li>
+          <% grade.users.each do |student| %>
+            <li class="list_default">
+              <%= link_to student_results_path(student.id) do %>
+                <%= student.last_name %> <%= student.first_name %>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+
+    </div>
+
+  </div>
 </div>

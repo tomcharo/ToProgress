@@ -5,6 +5,7 @@ class StudentsController < ApplicationController
     unless current_user.grade_id == 1
       redirect_to root_path
     end
-    @grades = Grade.where(:id => 2..7)
+    @grades_lower = Grade.where(:id => 2..4)
+    @grades_higher = Grade.where(:id => 5..7)
   end
 end
