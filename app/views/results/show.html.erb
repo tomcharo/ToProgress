@@ -20,21 +20,23 @@
     <table>
       <tr>
         <th class="subject_name">教科</th>
-        <th>点数/満点</th>
-        <th>平均点</th>
-        <th>順位/人数</th>
-      <tr>
+        <th class="subject_score">点数/満点</th>
+        <th class="subject_average">平均点</th>
+        <th class="subject_rank">順位/人数</th>
+      </tr>
       <% @result.subjects.each do |subject| %>
         <tr>
           <td><%= subject.name %></td>
           <td><%= subject.score %> / <%= subject.max_score %></td>
           <td><%= subject.average_score %></td>
-          <td><%= subject.rank %> / <%= subject.rank_range %>
+          <td><%= subject.rank %> / <%= subject.rank_range %></td>
         </tr>
       <% end %>
     </table>
 
-
+    <div class="default_btn">
+      <%= link_to "編集", new_student_result_subject_path(@student.id, @result.id), class: :btn_inner %>
+    </div>
   </div>
 
 </div>

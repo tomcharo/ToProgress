@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   root "contents#index"
 
   resources :students, only: :index do
-    resources :results, only: [:index, :show, :create]
+    resources :results, only: [:index, :show, :create] do
+      resources :subjects, only: [:new, :create, :edit, :update, :destroy]
+    end
   end
 
 end

@@ -111,6 +111,7 @@ a {
 
 .wrapper {
   display: flex;
+  overflow-x: auto;
 }
 
 .page_heading {
@@ -122,6 +123,7 @@ a {
 .side_bar {
   background-color: azure;
   min-height: 100vh;
+  min-width: 110px;
   width: 110px;
   border-right: 1px solid navy;
 }
@@ -130,7 +132,8 @@ a {
   background-color: rgb(246, 253, 253);
   padding: 0 0 50px 5px;
   min-height: 100vh;
-  min-width: calc(100vw - 110px);
+  min-width: 530px;
+  width: calc(100vw - 110px);
 }
 
 
@@ -163,15 +166,81 @@ a {
 table {
   text-align: right;
   border-collapse: collapse;
+  margin: 0 10px 10px 10px;
 }
 
 th, td {
-  padding: 5px 10px;
+  padding: 5px;
   border: 1px solid navy;
 }
 
 .subject_name {
-  width: 80px;
+  width: 111px;
+}
+
+.subject_score {
+  width: 130px;
+}
+
+.subject_average {
+  width: 61px;
+}
+
+.subject_rank {
+  min-width: 130px;
+}
+
+.subject_edit {
+  border: none;
+}
+
+.input_subject {
+  text-align: right;
+  width: 100px;
+}
+
+.input_num {
+  text-align: right;
+  width: 50px;
+}
+
+.now_edit_subject {
+  background-color: rgb(249, 225, 228);
+}
+
+.btn_wrapper {
+  display: flex;
+}
+
+.btn_wrapper>.actions>.form_btn {
+  margin: 10px 0 0 10px;
+}
+
+.default_btn {
+  display: table;
+  text-align: center;
+  background-color: rgb(235, 235, 235);
+  margin: 10px 0 0 10px;
+  height: 30px;
+  width: 150px;
+  border: 1px solid gray;
+  border-radius: 3px;
+}
+
+.delete_btn {
+  display: table;
+  text-align: center;
+  background-color: rgb(249, 225, 228);
+  margin: 10px 0 0 10px;
+  height: 30px;
+  width: 150px;
+  border: 1px solid gray;
+  border-radius: 3px;
+}
+
+.btn_inner {
+  display: table-cell;
+  vertical-align: middle;
 }
 
 

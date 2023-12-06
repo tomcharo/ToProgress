@@ -1,0 +1,68 @@
+<div class="wrapper">
+
+  <div class="side_bar">
+    <ul>
+    <% @student.results.each do |result| %>
+      <li class="list_default">
+        <%= link_to result.name, student_result_path(@student.id, result.id), class: :nav_btn %>
+      </li>
+    <% end %>
+    </ul>
+  </div>
+
+  <div class="main_right">
+    <% if current_user.grade_id == 1 %>
+      <div class="user_info"><%= @student.grade.name %> <%= @student.last_name %> <%= @student.first_name %></div>
+    <% end %>
+
+    <h2 class="page_heading"><%= @result.name %></h2>
+
+
+    <%= form_with model: @subject, url: student_result_subjects_path(@student.id, @result.id), local: true do |f| %>
+
+    <table>
+      <tr>
+        <th class="subject_name">教科</th>
+        <th class="subject_score">点数/満点</th>
+        <th class="subject_average">平均点</th>
+        <th class="subject_rank">順位/人数</th>
+      </tr>
+      <% @result.subjects.each do |subject| %>
+        <tr>
+          <td><%= subject.name %></td>
+          <td><%= subject.score %> / <%= subject.max_score %></td>
+          <td><%= subject.average_score %></td>
+          <td><%= subject.rank %> / <%= subject.rank_range %></td>
+          <td class="subject_edit"><%= link_to "編集", edit_student_result_subject_path(@student.id, @result.id, subject.id), class: :nav_btn %></td>
+        </tr>
+      <% end %>
+
+      <tr>
+        <td><%= f.text_field :name, placeholder: "例）国語", class: "input_subject" %></td>
+        <td><%= f.text_field :score, class: "input_num" %> / <%= f.text_field :max_score, class: "input_num" %></td>
+        <td><%= f.text_field :average_score, class: "input_num" %></td>
+        <td><%= f.text_field :rank, class: "input_num" %> / <%= f.text_field :rank_range, class: "input_num" %></td>
+      </tr>
+    </table>
+
+    <%= render "shared/error_messages", model: f.object %>
+
+    <div class="btn_wrapper">
+      <div class="actions">
+        <%= f.submit "保存して続ける", class: "form_btn" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "保存", class: "form_btn" %>
+      </div>
+
+      <div class="default_btn">
+        <%= link_to "終了", student_result_path(@student.id, @result.id), class: "btn_inner" %>
+      </div>
+    </div>
+
+    <% end %>
+
+  </div>
+
+</div>
