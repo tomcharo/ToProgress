@@ -8,12 +8,14 @@
       <% @grades_lower.each do |grade| %>
         <ul class="student_list">
           <li class="grade_name"><%= grade.name %></li>
-          <% grade.users.each do |student| %>
-            <li class="list_default">
-              <%= link_to student_results_path(student.id) do %>
-                <%= student.last_name %> <%= student.first_name %>
-              <% end %>
-            </li>
+          <% @students.each do |student| %>
+            <% if student.grade_id == grade.id %>
+              <li class="list_default">
+                <%= link_to student_results_path(student.id) do %>
+                  <%= student.last_name %> <%= student.first_name %>
+                <% end %>
+              </li>
+            <% end %>
           <% end %>
         </ul>
       <% end %>
@@ -25,12 +27,14 @@
       <% @grades_higher.each do |grade| %>
         <ul class="student_list">
           <li class="grade_name"><%= grade.name %></li>
-          <% grade.users.each do |student| %>
-            <li class="list_default">
-              <%= link_to student_results_path(student.id) do %>
-                <%= student.last_name %> <%= student.first_name %>
-              <% end %>
-            </li>
+          <% @students.each do |student| %>
+            <% if student.grade_id == grade.id %>
+              <li class="list_default">
+                <%= link_to student_results_path(student.id) do %>
+                  <%= student.last_name %> <%= student.first_name %>
+                <% end %>
+              </li>
+            <% end %>
           <% end %>
         </ul>
       <% end %>

@@ -9,10 +9,8 @@ class SubjectsController < ApplicationController
 
   def create
     @subject = Subject.new(subject_params)
-    if @subject.save && params[:commit] == "保存して続ける"
+    if @subject.save
       redirect_to new_student_result_subject_path(@subject.result.user_id, @subject.result_id)
-    elsif @subject.save
-      redirect_to student_result_path(@subject.result.user_id, @subject.result_id)
     else
       set_student_result
       render :new, status: :unprocessable_entity
@@ -25,10 +23,8 @@ class SubjectsController < ApplicationController
 
   def update
     @subject = Subject.find(params[:id])
-    if @subject.update(subject_params) && params[:commit] == "保存して続ける"
+    if @subject.update(subject_params)
       redirect_to new_student_result_subject_path(@subject.result.user_id, @subject.result_id)
-    elsif @subject.update(subject_params)
-      redirect_to student_result_path(@subject.result.user_id, @subject.result_id)
     else
       set_student_result
       render :edit, status: :unprocessable_entity

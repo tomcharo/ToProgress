@@ -163,6 +163,37 @@ a {
 
 /* 成績 */
 
+.result_wrapper {
+  display: flex;
+}
+
+.result_category {
+  color: navy;
+  font-size: 18px;
+  margin-right: 10px;
+}
+
+.result_list {
+  min-width: 90px;
+  max-width: 150px;
+  margin: 10px 10px 0 10px;
+  padding: 2px 3px;
+  border: 1px solid navy;
+  border-radius: 4px;
+}
+
+.bgcolor1 {
+  background-color: rgb(251, 220, 247);
+}
+
+.bgcolor2 {
+  background-color: rgb(198, 249, 249);
+}
+
+.bgcolor3 {
+  background-color: rgb(252, 252, 198);
+}
+
 table {
   text-align: right;
   border-collapse: collapse;

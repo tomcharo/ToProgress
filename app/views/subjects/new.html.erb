@@ -3,16 +3,29 @@
   <div class="side_bar">
     <ul>
     <% @student.results.each do |result| %>
-      <li class="list_default">
-        <%= link_to result.name, student_result_path(@student.id, result.id), class: :nav_btn %>
-      </li>
+      <%= link_to student_result_path(@student.id, result.id) do %>
+        <li class="result_list
+          <% case result.category_id %>
+          <% when 1 then %>
+            bgcolor1
+          <% when 2 then %>
+            bgcolor2
+          <% when 3 then %>
+            bgcolor3
+          <% end %>
+        ">
+          <%= result.name %>
+        </li>
+      <% end %>
     <% end %>
     </ul>
   </div>
 
   <div class="main_right">
     <% if current_user.grade_id == 1 %>
-      <div class="user_info"><%= @student.grade.name %> <%= @student.last_name %> <%= @student.first_name %></div>
+      <%= link_to student_results_path(@student.id) do %>
+        <div class="user_info"><%= @student.grade.name %> <%= @student.last_name %> <%= @student.first_name %></div>
+      <% end %>
     <% end %>
 
     <h2 class="page_heading"><%= @result.name %></h2>
@@ -48,10 +61,6 @@
     <%= render "shared/error_messages", model: f.object %>
 
     <div class="btn_wrapper">
-      <div class="actions">
-        <%= f.submit "保存して続ける", class: "form_btn" %>
-      </div>
-
       <div class="actions">
         <%= f.submit "保存", class: "form_btn" %>
       </div>

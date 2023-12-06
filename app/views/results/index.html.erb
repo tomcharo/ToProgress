@@ -1,13 +1,26 @@
 <div class="main">
   <% if current_user.grade_id == 1 %>
-    <div class="user_info"><%= @student.grade.name %> <%= @student.last_name %> <%= @student.first_name %></div>
+    <%= link_to student_results_path(@student.id) do %>
+      <div class="user_info"><%= @student.grade.name %> <%= @student.last_name %> <%= @student.first_name %></div>
+    <% end %>
   <% end %>
 
   <h2 class="page_heading">成績一覧</h2>
 
-  <% @results.each do |result| %>
-    <%= link_to result.name, student_result_path(@student.id, result.id) %>
+  <div class="result_wrapper">
+  <% @categories.each do |category| %>
+    <ul>
+      <li class="result_category"><%= category.name %></li>
+      <% @results.each do |result| %>
+        <% if result.category_id == category.id %>
+          <%= link_to student_result_path(@student.id, result.id) do %>
+            <li class="result_list"><%= result.name %></li>
+          <% end %>
+        <% end %>
+      <% end %>
+    </ul>
   <% end %>
+  </div>
 
   <h2 class="page_heading">成績登録</h2>
 

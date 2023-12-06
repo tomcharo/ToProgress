@@ -4,6 +4,7 @@ class ResultsController < ApplicationController
   before_action :set_student, only: [:index, :show]
 
   def index
+    @categories = Category.where(:id => 1..3)
     @results = @student.results
     @new_result = Result.new
   end
