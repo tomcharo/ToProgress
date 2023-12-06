@@ -50,6 +50,33 @@
     <div class="default_btn">
       <%= link_to "編集", new_student_result_subject_path(@student.id, @result.id), class: :btn_inner %>
     </div>
+
+
+    <div class="comment_wrapper">
+
+      <ul class="list_default">
+        <% @comments.each do |comment| %>
+          <li class="comment_text"><%= comment.text %> by<%= comment.user.last_name %></li>
+        <% end %>
+      </ul>
+
+      <%= form_with model: @comment, url: student_result_comments_path(@student.id, @result.id), local: true do |f| %>
+
+        <div class="field">
+          <%= f.label :text, "コメント" %><br />
+          <%= f.text_field :text, class: "input_default" %>
+        </div>
+
+        <%= render "shared/error_messages", model: f.object %>
+
+        <div class="actions">
+          <%= f.submit "投稿", class: "form_btn" %>
+        </div>
+
+      <% end %>
+
+    </div>
+
   </div>
 
 </div>

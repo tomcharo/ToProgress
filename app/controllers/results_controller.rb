@@ -11,6 +11,8 @@ class ResultsController < ApplicationController
 
   def show
     @result = @student.results.find(params[:id])
+    @comments = @result.comments.includes(:user)
+    @comment = Comment.new
   end
 
   def create

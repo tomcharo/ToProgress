@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :students, only: :index do
     resources :results, only: [:index, :show, :create] do
       resources :subjects, only: [:new, :create, :edit, :update, :destroy]
+      resources :comments, only: :create
     end
   end
 

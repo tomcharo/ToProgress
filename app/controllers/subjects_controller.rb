@@ -1,7 +1,7 @@
 class SubjectsController < ApplicationController
   before_action :authenticate_user!
   before_action :move_to_root
-  before_action :set_student_result, only: [:new, :edit]
+  before_action :set_student_result_comment, only: [:new, :edit]
 
   def new
     @subject = Subject.new
@@ -12,7 +12,7 @@ class SubjectsController < ApplicationController
     if @subject.save
       redirect_to new_student_result_subject_path(@subject.result.user_id, @subject.result_id)
     else
-      set_student_result
+      set_student_result_comment
       render :new, status: :unprocessable_entity
     end
   end
@@ -26,7 +26,7 @@ class SubjectsController < ApplicationController
     if @subject.update(subject_params)
       redirect_to new_student_result_subject_path(@subject.result.user_id, @subject.result_id)
     else
-      set_student_result
+      set_student_result_comment
       render :edit, status: :unprocessable_entity
     end
   end
@@ -50,8 +50,10 @@ class SubjectsController < ApplicationController
     end
   end
 
-  def set_student_result
+  def set_student_result_comment
     @student = User.find(params[:student_id])
     @result = @student.results.find(params[:result_id])
+    @comments = @result.comments.includes(:user)
+    @comment = Comment.new
   end
 end
