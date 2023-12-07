@@ -10,4 +10,7 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :questions, only: [:index] do
+    resources :messages, only: [:index]
+  end
 end

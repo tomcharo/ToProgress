@@ -1,0 +1,12 @@
+<div class="main">
+  <ul>
+    <% @questions.each do |question| %>
+      <%= link_to question_messages_path(question.id) do %>
+        <li class="list_default">
+          <%= question.title %>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+
+</div>

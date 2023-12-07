@@ -1,0 +1,12 @@
+<div class="main">
+  <h2 class="page_heading"><%= @question.title %></h2>
+
+  <ul>
+    <% @messages.each do |message| %>
+      <li class="list_default">
+        <%= message.text %>
+      </li>
+    <% end %>
+  </ul>
+
+</div>
