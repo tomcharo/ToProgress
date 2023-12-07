@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_06_100955) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_07_171502) do
   create_table "comments", charset: "utf8", force: :cascade do |t|
     t.text "text", null: false
     t.bigint "user_id", null: false
@@ -19,6 +19,25 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_06_100955) do
     t.datetime "updated_at", null: false
     t.index ["result_id"], name: "index_comments_on_result_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "messages", charset: "utf8", force: :cascade do |t|
+    t.text "text", null: false
+    t.bigint "user_id", null: false
+    t.bigint "question_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["question_id"], name: "index_messages_on_question_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "questions", charset: "utf8", force: :cascade do |t|
+    t.string "title", null: false
+    t.boolean "closed", default: false, null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_questions_on_user_id"
   end
 
   create_table "results", charset: "utf8", force: :cascade do |t|
@@ -60,6 +79,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_06_100955) do
 
   add_foreign_key "comments", "results"
   add_foreign_key "comments", "users"
+  add_foreign_key "messages", "questions"
+  add_foreign_key "messages", "users"
+  add_foreign_key "questions", "users"
   add_foreign_key "results", "users"
   add_foreign_key "subjects", "results"
 end
