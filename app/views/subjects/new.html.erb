@@ -75,17 +75,20 @@
 
     <div class="comment_wrapper">
 
-      <ul class="list_default">
+      <h3 class="comment_title">コメント</div>
+
+      <ul>
         <% @comments.each do |comment| %>
-          <li class="comment_text"><%= comment.text %> by<%= comment.user.last_name %></li>
+          <li class="list_default">
+            <%= comment.text %> <span class="comment_user">by <%= comment.user.last_name %></span>
+          </li>
         <% end %>
       </ul>
 
       <%= form_with model: @comment, url: student_result_comments_path(@student.id, @result.id), local: true do |f| %>
 
         <div class="field">
-          <%= f.label :text, "コメント" %><br />
-          <%= f.text_field :text, class: "input_default" %>
+          <%= f.text_area :text, class: "input_comment" %>
         </div>
 
         <%= render "shared/error_messages", model: f.object %>
