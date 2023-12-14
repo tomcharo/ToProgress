@@ -1,9 +1,11 @@
 <div class="main">
+  <h2 class="page_heading">質問一覧</h2>
+
   <ul>
     <% @questions.each do |question| %>
       <%= link_to question_messages_path(question.id) do %>
         <li class="list_default">
-          <%= question.title %>
+          <%= question.title %> <span class="comment_user">by <%= question.user.last_name %> <%= question.user.first_name %></span>
         </li>
       <% end %>
     <% end %>
