@@ -4,11 +4,34 @@
   <ul>
     <% @questions.each do |question| %>
       <%= link_to question_messages_path(question.id) do %>
-        <li class="list_default">
+        <li class="question_list
+          <% if question.closed == true %>
+            bgcolor3
+          <% end %>
+        ">
           <%= question.title %> <span class="comment_user">by <%= question.user.last_name %> <%= question.user.first_name %></span>
         </li>
       <% end %>
     <% end %>
   </ul>
+
+  <% if current_user.grade_id != 1 %>
+    <h2 class="page_heading">質問作成</h2>
+
+    <%= form_with model: @question, url: questions_path, local: true do |f| %>
+
+      <div class="field">
+        <%= f.label :title, "質問タイトル入力" %><br />
+        <%= f.text_field :title, class: "input_default" %>
+      </div>
+
+      <%= render "shared/error_messages", model: f.object %>
+
+      <div class="actions">
+        <%= f.submit "作成", class: "form_btn" %>
+      </div>
+
+    <% end %>
+  <% end %>
 
 </div>

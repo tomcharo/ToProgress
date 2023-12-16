@@ -3,7 +3,7 @@
 
   <ul>
     <% @messages.each do |message| %>
-      <li class="list_default">
+      <li class="question_list">
         <%= message.text %> <span class="comment_user">by <%= message.user.last_name %></span>
       </li>
     <% end %>

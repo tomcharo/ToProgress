@@ -299,6 +299,18 @@ th, td {
 }
 
 
+/* 質問 */
+
+.question_list {
+  min-width: 200px;
+  max-width: 500px;
+  margin: 10px 10px 0 10px;
+  padding: 2px 3px;
+  border: 1px solid navy;
+  border-radius: 4px;
+}
+
+
 /* レスポンシブデザイン */
 
 @media (max-width: 700px) {
