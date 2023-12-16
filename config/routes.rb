@@ -11,6 +11,6 @@ Rails.application.routes.draw do
   end
 
   resources :questions, only: [:index, :create] do
-    resources :messages, only: [:index]
+    resources :messages, only: [:index, :create]
   end
 end

@@ -9,4 +9,34 @@
     <% end %>
   </ul>
 
+  <% if @question.closed == false %>
+    <%= form_with model: @message, url: question_messages_path(@question.id), local: true do |f| %>
+
+      <div class="field">
+        <%= f.text_area :text, class: "input_comment" %>
+      </div>
+
+      <%= render "shared/error_messages", model: f.object %>
+
+      <div class="actions">
+        <%= f.submit "送信", class: "form_btn" %>
+      </div>
+    <% end %>
+  <% end %>
+
+  <div class="btn_wrapper">
+    <div class="default_btn">
+      <%= link_to "一覧に戻る", questions_path, class: "btn_inner" %>
+    </div>
+    <% if @question.closed == false %>
+      <div class="default_btn">
+        <%= link_to "質問を閉じる", question_messages_path(@question.id, closed: true), class: "btn_inner" %>
+      </div>
+    <% else %>
+      <div class="default_btn">
+        <%= link_to "再開する", question_messages_path(@question.id, closed: false), class: "btn_inner" %>
+      </div>
+    <% end %>
+  </div>
+
 </div>

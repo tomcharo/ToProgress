@@ -5,10 +5,11 @@
     <% @questions.each do |question| %>
       <%= link_to question_messages_path(question.id) do %>
         <li class="question_list
-          <% if question.closed == true %>
-            bgcolor3
+          <% if question.closed == false %>
+            bgcolor2
           <% end %>
         ">
+          <% if question.closed == true %>【済】<% end %>
           <%= question.title %> <span class="comment_user">by <%= question.user.last_name %> <%= question.user.first_name %></span>
         </li>
       <% end %>
