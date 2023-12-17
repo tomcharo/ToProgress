@@ -63,40 +63,40 @@ https://toprogress.onrender.com
 
 - ユーザー管理
   - ユーザー登録機能<br>
-    登録時に学年を選択する。講師かそれ以外（生徒）かで利用できる機能の範囲が変わる。学年はヘッダーに表示される。
+    登録時に学年を選択する。講師かそれ以外（生徒）かで利用できる機能の範囲が変わる。学年はヘッダーに表示される。<br>
     [![Image from Gyazo](https://i.gyazo.com/a112cd1b32568e0a70b4dac929d29116.gif)](https://gyazo.com/a112cd1b32568e0a70b4dac929d29116)
 
 - 成績管理
   - 成績を閲覧する機能
-    - ユーザーの学年が講師の場合、全生徒の成績を閲覧できる
+    - ユーザーの学年が講師の場合、全生徒の成績を閲覧できる<br>
     [![Image from Gyazo](https://i.gyazo.com/f2a436de5b4d3c66b56f0a27d84793ee.gif)](https://gyazo.com/f2a436de5b4d3c66b56f0a27d84793ee)
-    - ユーザーの学年が中１〜高３の場合、自身の成績を閲覧できる
+    - ユーザーの学年が中１〜高３の場合、自身の成績を閲覧できる<br>
     [![Image from Gyazo](https://i.gyazo.com/816028e2f0d0555740617e74e6c3a427.gif)](https://gyazo.com/816028e2f0d0555740617e74e6c3a427)
 
   - 成績を登録する機能<br>
-    登録時に分類を選択する。一覧ページでは分類ごとに表示される。
+    登録時に分類を選択する。一覧ページでは分類ごとに表示される。<br>
     [![Image from Gyazo](https://i.gyazo.com/02d4fddd4af773bad33a9dd2edbe2e69.gif)](https://gyazo.com/02d4fddd4af773bad33a9dd2edbe2e69)
 
-  - 科目を登録、編集、削除する機能
+  - 科目を登録、編集、削除する機能<br>
     [![Image from Gyazo](https://i.gyazo.com/2070bc423bca15b18fb9e0dac06b9fb6.gif)](https://gyazo.com/2070bc423bca15b18fb9e0dac06b9fb6)
 
-  - 成績にコメントする機能
+  - 成績にコメントする機能<br>
     [![Image from Gyazo](https://i.gyazo.com/3d0cfb20c2218e0faf6c8de008692763.gif)](https://gyazo.com/3d0cfb20c2218e0faf6c8de008692763)
 
 - 質問管理
   - 質問を閲覧する機能
-    - ユーザーの学年が講師の場合、全生徒の質問を閲覧できる
+    - ユーザーの学年が講師の場合、全生徒の質問を閲覧できる<br>
     [![Image from Gyazo](https://i.gyazo.com/74ef287af4454339727b32e204bfb14d.gif)](https://gyazo.com/74ef287af4454339727b32e204bfb14d)
-    - ユーザーの学年が中１〜高３の場合、自身の質問を閲覧できる
+    - ユーザーの学年が中１〜高３の場合、自身の質問を閲覧できる<br>
     [![Image from Gyazo](https://i.gyazo.com/ed2f33f4915b198d208b4aec80ceb6be.gif)](https://gyazo.com/ed2f33f4915b198d208b4aec80ceb6be)
 
   - 質問を作成する機能<br>
-    ユーザーの学年が中１〜高３の場合のみ作成できる。
+    ユーザーの学年が中１〜高３の場合のみ作成できる。<br>
     [![Image from Gyazo](https://i.gyazo.com/693273eaf7891ff23db4b5a6c0861b62.gif)](https://gyazo.com/693273eaf7891ff23db4b5a6c0861b62)
 
-  - 質問チャット機能
+  - 質問チャット機能<br>
   [![Image from Gyazo](https://i.gyazo.com/872d436b536293ec86e11a00a77a73b3.gif)](https://gyazo.com/872d436b536293ec86e11a00a77a73b3)
-    - 解決したらチャットを終了させることができ、また再開させることもできる
+    - 解決したらチャットを終了させることができ、また再開させることもできる<br>
     [![Image from Gyazo](https://i.gyazo.com/7d0a3a93559738ceaccdf49efbff47da.gif)](https://gyazo.com/7d0a3a93559738ceaccdf49efbff47da)
 
 
