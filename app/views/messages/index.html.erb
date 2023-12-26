@@ -4,20 +4,21 @@
   <ul>
     <% @messages.each do |message| %>
       <li class="question_list">
-        <%= message.text %> <span class="comment_user">by <%= message.user.last_name %></span>
+        <div>
+          <%= message.text %> <span class="comment_user">by <%= message.user.last_name %></span>
+        </div>
+        <%= image_tag message.image, class: "message_image" if message.image.attached? %>
       </li>
     <% end %>
   </ul>
 
   <% if @question.closed == false %>
     <%= form_with model: @message, url: question_messages_path(@question.id), local: true do |f| %>
-
       <div class="field">
         <%= f.text_area :text, class: "input_comment" %>
+        <%= f.file_field :image %>
       </div>
-
       <%= render "shared/error_messages", model: f.object %>
-
       <div class="actions">
         <%= f.submit "送信", class: "form_btn" %>
       </div>
