@@ -10,6 +10,10 @@ RSpec.describe Message, type: :model do
       it "全て入力されていれば登録できる" do
         expect(@message).to be_valid
       end
+      it "image:空でも登録できる" do
+        @message.image = nil
+        expect(@message).to be_valid
+      end
     end
     context "メッセージ登録できない場合" do
       it "text:空" do
