@@ -8,7 +8,7 @@ module SignInSupport
     fill_in "user_email", with: user.email
     fill_in "user_password", with: user.password
     find('input[name="commit"]').click
-    sleep 1
+    sleep 0.1
     expect(page).to have_current_path(root_path)
     expect(page).to have_content(user.grade.name)
   end
