@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :question do
-    title {"testtitle"}
+    title {"spec質問"}
     closed {false}
     association :user
   end
