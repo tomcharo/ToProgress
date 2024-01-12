@@ -98,14 +98,15 @@ https://toprogress.onrender.com
   [![Image from Gyazo](https://i.gyazo.com/872d436b536293ec86e11a00a77a73b3.gif)](https://gyazo.com/872d436b536293ec86e11a00a77a73b3)
     - 解決したらチャットを終了させることができ、また再開させることもできる<br>
     [![Image from Gyazo](https://i.gyazo.com/7d0a3a93559738ceaccdf49efbff47da.gif)](https://gyazo.com/7d0a3a93559738ceaccdf49efbff47da)
+    - 画像を投稿できる<br>
+    [![Image from Gyazo](https://i.gyazo.com/b6dcdd4ffbbcf532cf12d6964107ec50.gif)](https://gyazo.com/b6dcdd4ffbbcf532cf12d6964107ec50)
 
 
 # 実装予定の機能
 
-- 実装中<br>
-  - 質問チャットにて画像を投稿できる機能
-  - 講師側からお知らせ等のコンテンツを作成、閲覧できる機能
 - 実装予定<br>
+  - 講師側からお知らせ等のコンテンツを作成、閲覧できる機能
+- 今後の課題<br>
   - 教室ネットワークに繋がなければユーザー新規登録をできなくする
   - データの暗号化処理
 
