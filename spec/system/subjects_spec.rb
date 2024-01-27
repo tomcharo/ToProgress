@@ -92,4 +92,34 @@ RSpec.describe "科目登録", type: :system do
       expect(page).to have_content(@subject.name)
     end
   end
+
+  context "科目登録できない場合" do
+    it "入力に不備があると登録できない" do
+      # 生徒ユーザーでログイン
+      sign_in(@subject.result.user)
+      # 成績一覧ページに遷移
+      click_on "成績一覧"
+      sleep 0.1
+      expect(current_path).to eq(student_results_path(@subject.result.user))
+      # 成績詳細ページに遷移
+      click_on @subject.result.name
+      sleep 0.1
+      expect(current_path).to eq(student_result_path(@subject.result.user, @subject.result))
+      # 科目登録ページに遷移
+      click_on "編集"
+      sleep 0.1
+      expect(current_path).to eq(new_student_result_subject_path(@subject.result.user, @subject.result))
+      # 値を入力して送信、Subjectモデルカウント確認
+      expect{
+        find('input[value="保存"]').click
+        sleep 0.1
+      }.to change{Subject.count}.by(0)
+      # 科目登録ページでエラーメッセージが表示される
+      expect(current_path).to eq(new_student_result_subject_path(@subject.result.user, @subject.result))
+      expect(page).to have_selector(".header", text: @subject.result.user.last_name)
+      expect(page).to have_selector(".main_right", text: @subject.result.name)
+      expect(page).to have_content("Name can't be blank")
+      expect(page).to have_content("Max score is not a number")
+    end
+  end
 end
