@@ -86,3 +86,37 @@ RSpec.describe "成績登録", type: :system do
     end
   end
 end
+
+describe "コメント投稿" do
+  before do
+    @text = "specコメント"
+    @result = FactoryBot.create(:result)
+  end
+
+  context "コメント投稿できる場合" do
+    it "生徒が自身の成績にコメントできる" do
+      # 生徒ユーザーでログイン
+      sign_in(@result.user)
+      # 成績一覧ページに遷移
+      click_on "成績一覧"
+      sleep 0.1
+      expect(current_path).to eq(student_results_path(@result.user))
+      # 成績詳細ページに遷移
+      click_on @result.name
+      sleep 0.1
+      expect(current_path).to eq(student_result_path(@result.user, @result))
+      # コメントを入力して送信、Commentモデルカウント確認
+      fill_in "comment_text", with: @text
+      expect{
+        find('input[value="投稿"]').click
+        sleep 0.1
+      }.to change{Comment.count}.by(1)
+      # 適切に表示されていることを確認(成績詳細ページ)
+      expect(current_path).to eq(student_result_path(@result.user, @result))
+      expect(page).to have_selector(".header", text: @result.user.last_name)
+      expect(page).to have_selector(".main_right", text: @result.name)
+      expect(page).to have_selector(".main_right", text: @text)
+      expect(page).to have_selector(".main_right", text: @result.user.last_name)
+    end
+  end
+end
