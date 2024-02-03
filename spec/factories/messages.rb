@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :message do
-    text {"testtext"}
+    text {"specメッセージ"}
     association :user
     association :question
 
