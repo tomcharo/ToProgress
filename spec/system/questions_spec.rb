@@ -73,6 +73,7 @@ describe "質問チャット" do
   before do
     @message = "specメッセージ"
     @question = FactoryBot.create(:question)
+    @teacher = FactoryBot.create(:user_teacher)
   end
 
   context "メッセージ送信できる場合" do
@@ -100,6 +101,31 @@ describe "質問チャット" do
       expect(page).to have_selector(".page_heading", text: "by #{@question.user.last_name}")
       expect(page).to have_selector(".question_list", text: @message)
       expect(page).to have_selector(".question_list", text: "by #{@question.user.last_name}")
+    end
+    it "先生が生徒の質問チャットでメッセージ送信できる" do
+      # 先生ユーザーでログイン
+      sign_in(@teacher)
+      # 質問一覧ページに遷移
+      click_on "質問一覧"
+      sleep 0.1
+      expect(current_path).to eq(questions_path)
+      # メッセージ一覧ページに遷移
+      click_on @question.title
+      sleep 0.1
+      expect(current_path).to eq(question_messages_path(@question))
+      # メッセージを入力して送信、Messageモデルカウント確認
+      fill_in "message_text", with: @message
+      expect{
+        find('input[name="commit"]').click
+        sleep 0.1
+      }.to change{Message.count}.by(1)
+      # 適切に表示されていることを確認(メッセージ一覧ページ)
+      expect(page).to have_current_path(question_messages_path(@question))
+      expect(page).to have_selector(".header", text: @teacher.last_name)
+      expect(page).to have_selector(".page_heading", text: @question.title)
+      expect(page).to have_selector(".page_heading", text: "by #{@question.user.last_name}")
+      expect(page).to have_selector(".question_list", text: @message)
+      expect(page).to have_selector(".question_list", text: "by #{@teacher.last_name}")
     end
   end
 end
