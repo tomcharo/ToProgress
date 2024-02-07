@@ -1,7 +1,7 @@
 class ResultsController < ApplicationController
   before_action :authenticate_user!
   before_action :move_to_root
-  before_action :set_student, only: [:index, :show]
+  before_action :set_student, only: [:index, :show, :edit]
 
   def index
     @categories = Category.where(:id => 1..3)
@@ -25,6 +25,16 @@ class ResultsController < ApplicationController
       @results = @student.results
       render :index, status: :unprocessable_entity
     end
+  end
+
+  def edit
+    @result = @student.results.find(params[:id])
+    @comments = @result.comments.includes(:user)
+    @comment = Comment.new
+  end
+
+  def update
+    
   end
 
 
