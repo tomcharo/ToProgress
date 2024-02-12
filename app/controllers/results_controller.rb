@@ -34,7 +34,15 @@ class ResultsController < ApplicationController
   end
 
   def update
-    
+    @new_result = Result.find(params[:id])
+    if @new_result.update(result_params)
+      redirect_to new_student_result_subject_path(@new_result.user_id, @new_result.id)
+    else
+      set_student
+      @categories = Category.where(:id => 1..3)
+      @results = @student.results
+      render :index, status: :unprocessable_entity
+    end
   end
 
 
